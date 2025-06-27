@@ -70,7 +70,14 @@ order	       desc
 
 5) POST/api/peliculas => marcar peliculas como vistas=> http://localhost:3000/api/peliculas/vista
    
-   Este endpoint marca las peliculas como vistas UNICAMENTE en un rol de usuario "user" 
+   Este endpoint marca las peliculas como vistas UNICAMENTE en un rol de usuario "user"
+
+   JSON para enviar:
+
+   {
+  "usuario_id": 5,
+  "pelicula_id": 7
+} 
 
    cuando la respuesta sea exitosa "201 Created" se verá el siguiente JSON:
 

@@ -15,5 +15,28 @@ class PostgresUserRepository extends UserRepository {
      return result.rows[0];
   }
 
+    async listUsuariosConPeliculasVistas() {
+      const result = await db.query(`
+        SELECT 
+          u.id as usuario_id,
+          u.nombre,
+          u.email,
+          json_agg(
+            json_build_object(
+              'titulo', p.titulo,
+              'categoria', c.nombre
+            )
+          ) as peliculas_vistas
+        FROM usuarios u
+        LEFT JOIN peliculas_vistas pv ON pv.usuario_id = u.id
+        LEFT JOIN peliculas p ON p.id = pv.pelicula_id
+        LEFT JOIN categorias c ON c.id = p.categoria_id
+        WHERE pv.pelicula_id IS NOT NULL
+        GROUP BY u.id, u.nombre, u.email
+      `);
+
+      return result.rows;
+  }
+
 }
 module.exports = PostgresUserRepository;

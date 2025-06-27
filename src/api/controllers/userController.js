@@ -1,5 +1,6 @@
 const CreateUserUseCase = require('../../application/use_cases/CreateUserUseCase');
 const PostgresUserRepository = require('../../infrastructure/repositories/PostgresUserRepository');
+const ListUsuariosConPeliculasVistasUseCase = require('../../application/use_cases/ListUsuariosConPeliculasVistasUseCase');
 
 const userRepository = new PostgresUserRepository();
 const createUserUseCase = new CreateUserUseCase(userRepository);
@@ -13,4 +14,17 @@ const createUser = async (req, res) => {
   }
 };
 
-module.exports = { createUser };
+const listUsuariosConPeliculasVistas = async (req, res) => {
+    const useCase = new ListUsuariosConPeliculasVistasUseCase(userRepository);
+  try {
+    const usuarios = await useCase.execute();
+    res.json(usuarios);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+module.exports = { 
+  createUser,
+  listUsuariosConPeliculasVistas
+};
