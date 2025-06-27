@@ -44,3 +44,5 @@ limit	     5
 
 Key          Value
 order	     desc
+
+4) GET/api/peliculas => listar peliculas "novedades"=> http://localhost:3000/api/peliculas/novedades

@@ -41,6 +41,17 @@ class PostgresPeliculaRepository extends PeliculaRepository {
 
         return result.rows;
     }
+     async listNovedades() {
+       const query = `
+         SELECT p.*, c.nombre AS categoria_nombre
+         FROM peliculas p
+         JOIN categorias c ON p.categoria_id = c.id
+         WHERE p.fecha_estreno >= CURRENT_DATE - INTERVAL '21 days'
+         ORDER BY p.fecha_estreno DESC
+       `;
+       const result = await db.query(query);
+       return result.rows;
+    }
 }
 
 module.exports = PostgresPeliculaRepository;

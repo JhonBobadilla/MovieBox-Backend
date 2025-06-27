@@ -5,6 +5,9 @@ class PeliculaRepository {
   async list({ titulo, categoria, page, limit, order }) {
         throw new Error('Not implemented');
   }
+  async listNovedades() {
+        throw new Error('Método no implementado');
+  }
 }
 
 module.exports = PeliculaRepository;
