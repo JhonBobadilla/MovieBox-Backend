@@ -5,10 +5,12 @@ const ListNovedadesUseCase = require('../../application/use_cases/ListNovedadesU
 const MarcarPeliculaVistaUseCase = require('../../application/use_cases/MarcarPeliculaVistaUseCase');
 const PostgresUserRepository = require('../../infrastructure/repositories/PostgresUserRepository');
 const DeletePeliculaUseCase = require('../../application/use_cases/DeletePeliculaUseCase');
+const UpdatePeliculaUseCase = require('../../application/use_cases/UpdatePeliculaUseCase');
 
 const peliculaRepository = new PostgresPeliculaRepository();
 const userRepository = new PostgresUserRepository();
 
+const updatePeliculaUseCase = new UpdatePeliculaUseCase(peliculaRepository, userRepository);
 const deletePeliculaUseCase = new DeletePeliculaUseCase(peliculaRepository, userRepository);
 const createPeliculaUseCase = new CreatePeliculaUseCase(peliculaRepository, userRepository);
 const listPeliculasUseCase = new ListPeliculasUseCase(peliculaRepository);
@@ -64,7 +66,18 @@ const borrarPelicula = async (req, res) => {
   }
 };
 
+const actualizarPelicula = async (req, res) => {
+  try {
+    const data = req.body; // Debe incluir pelicula_id, usuario_id y los campos a actualizar
+    const updated = await updatePeliculaUseCase.execute(data);
+    res.json(updated);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
 module.exports = {
+  actualizarPelicula,
   crearPelicula,
   listPeliculas,
   listNovedades,

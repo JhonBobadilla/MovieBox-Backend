@@ -73,6 +73,25 @@ class PostgresPeliculaRepository extends PeliculaRepository {
       await db.query('DELETE FROM peliculas WHERE id = $1', [id]);
     }
 
+    async update(id, updateData) {
+      const fields = [];
+      const values = [];
+      let idx = 1;
+      for (const [key, value] of Object.entries(updateData)) {
+        fields.push(`${key} = $${idx++}`);
+        values.push(value);
+      }
+      if (fields.length === 0) return null;
+
+      values.push(id);
+      const query = `
+        UPDATE peliculas SET ${fields.join(', ')}
+        WHERE id = $${idx}
+        RETURNING *;
+      `;
+      const result = await db.query(query, values);
+      return result.rows[0];
+    }
 }
 
 module.exports = PostgresPeliculaRepository;

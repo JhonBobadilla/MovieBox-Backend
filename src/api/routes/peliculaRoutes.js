@@ -7,5 +7,6 @@ router.get('/', peliculaController.listPeliculas);
 router.get('/novedades', peliculaController.listNovedades);
 router.post('/vista', peliculaController.marcarComoVista);
 router.delete('/borrar', peliculaController.borrarPelicula);
+router.put('/actualizar', peliculaController.actualizarPelicula);
 
 module.exports = router;

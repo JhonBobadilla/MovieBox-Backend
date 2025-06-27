@@ -85,7 +85,21 @@ Este endpoint borra las peliculas UNICAMENTE en un rol de usuario "admin"
 
 {
   "pelicula_id": 5,
-  "usuario_id": 4
+  "usuario_id": 4 // Unicamente rol de "admin"
 }
 
 Cuando se borre la pelicula se verá el mensaje "200 ok" "Película eliminada correctamente"
+
+8) PUT/api/peliculas7actualizar => actualiza una pelicula => http://localhost:3000/api/peliculas/actualizar
+
+Este endpoint actualiza las peliculas UNICAMENTE en un rol de usuario "admin"
+
+{
+  "pelicula_id": 7,
+  "usuario_id": 1, // Unicamente rol de "admin" 
+  "titulo": "La Monja 2",
+  "fecha_estreno": "2024-05-25",
+  "categoria_id": 2
+}
+
+Cuando se borre la pelicula se verá el mensaje "200 ok" 
