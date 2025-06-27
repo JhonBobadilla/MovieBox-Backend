@@ -35,21 +35,25 @@ Así mismo implementa MVCC (Multi-Version Concurrency Control) característica d
 git clone https://github.com/JhonBobadilla/MovieBox-Backend
 
 ```
+---
 
 ## 4. Modelo Relacional
 
-![Modelo Relacional](docs/modelo_relacional.md)
+Ver en docs/modelo_relacional.md
 
 ---
 
 ## 5. Scripts SQL (DDL, DML) y Consultas CRUD
 
-![Scripts de la base de datos](docs/script_db.sql)
+Ver en docs/script_db.sql
 
+---
 
 ## 6. Instrucciones de ejecución
 
 A continuación se describe cómo probar los endpoints utilizando Postman:
+
+---
 
 ### POST/api/users => crear usuario => http://localhost:3000/api/users
 
@@ -64,6 +68,8 @@ Body de creación:
 
 Respuesta esperada "201 Created"
 
+---
+
 ### POST/api/peliculas => crear pelicula => http://localhost:3000/api/peliculas
 
 Crea UNICAMENTE CON id de rol "admin" (ver tabla usuarios columna rol), con el siguiente Body:
@@ -76,6 +82,8 @@ Crea UNICAMENTE CON id de rol "admin" (ver tabla usuarios columna rol), con el s
 }
 
 Respuesta esperada "201 Created"
+
+---
 
 ### GET/api/peliculas => listar peliculas => http://localhost:3000/api/peliculas
 
@@ -107,10 +115,14 @@ limit	       5
 Key          Value
 order	       desc
 
+---
+
 ### GET/api/peliculas => listar peliculas "novedades" => http://localhost:3000/api/peliculas/novedades
    (fecha de estreno inferior a tres semanas)
    
    Respuesta esperada "200 ok"
+
+   ---
 
 ### POST/api/peliculas => marcar peliculas como vistas => http://localhost:3000/api/peliculas/vista
    
@@ -125,11 +137,15 @@ order	       desc
 
    Respuesta esperada "201 Created" 
 
+   ---
+
 ### GET/api/peliculas-vistas => lista usuarios con las peliculas que han visto "peliculas-vistas"=> http://localhost:3000/api/peliculas-vistas   
 
 Lista usuarios con las peliculas que han visto.
 
 Respuesta esperada "200 ok"
+
+---
 
 ### DELETE/api/peliculas/borrar => borra una pelicula => http://localhost:3000/api/peliculas/borrar 
 
@@ -141,6 +157,8 @@ Borra peliculas UNICAMENTE en un rol "admin"
 }
 
 Respuesta esperada "200 ok" "Película eliminada correctamente"
+
+---
 
 ### PUT/api/peliculas7actualizar => actualiza una pelicula => http://localhost:3000/api/peliculas/actualizar
 
@@ -155,6 +173,8 @@ Actualiza las peliculas UNICAMENTE en un rol "admin"
 }
 
 El resultado esperado es el Body actualizado.
+
+---
 
 ## 7. Control de versiones y ramas Git
 
@@ -179,6 +199,8 @@ docker-compose.yml
 
 Estos archivos han sido preparados para facilitar la construcción y el despliegue futuro de la API en contenedores Docker, permitiendo una mayor portabilidad y escalabilidad del sistema.
 
+---
+
 ## 9. Integración y Despliegue Continuo (CI/CD)
 
 Descripción de cómo implementaría un flujo de integración y despliegue
@@ -186,7 +208,7 @@ continuo (CI/CD)
 
 Para asegurar la calidad, la integración continua y la entrega automatizada de la API, se incluye en este repositorio un archivo Jenkinsfile con la definición de un pipeline básico de CI/CD usando Jenkins.
 
-
+---
 
 
 
