@@ -11,19 +11,20 @@ Se debe crear con el siguiente JSON:
   "role": "admin" // Roles disponibles "admin" y "user"
 }
 
-Una vez creado el usuario se vera el "201 Created"
+Una vez creado el usuario se vera el mensaje "201 Created"
 
 2) POST/api/peliculas => crear pelicula => http://localhost:3000/api/peliculas
 
-Se debe crear con el siguiente JSON:
+Se debe crear UNICAMENTE CON ID DE "admin" NO CREA CON ID DE "user" con el siguiente JSON:
 
 {
   "titulo": "El Conjuro",
   "fecha_estreno": "2023-06-01",
   "categoria_id": 1 // 1=Terror, 2=Suspenso, 3=Drama y 4=Comedia.
+  "usuario_id": 15 // solo crea con id de admin, (ver tabla usuarios columna rol).
 }
 
-Una vez creada la pelicula se vera el "201 Created"
+Una vez creada la pelicula se vera el mensaje "201 Created"
 
 3) GET/api/peliculas => listar peliculas => http://localhost:3000/api/peliculas
 
@@ -58,35 +59,22 @@ order	       desc
 
 4) GET/api/peliculas => listar peliculas "novedades"=> http://localhost:3000/api/peliculas/novedades
 
-   cuando la respuesta sea exitosa "201 Created" se verán varios JSON de este tipo:
+   Cuando se listen las peliculas se verá el mensaje "200 ok"
 
-{
-        "id": 10,
-        "titulo": "Risas en cuarentena",
-        "fecha_estreno": "2025-06-25T05:00:00.000Z",
-        "categoria_id": 4,
-        "categoria_nombre": "Comedia"
-    }
 
 5) POST/api/peliculas => marcar peliculas como vistas=> http://localhost:3000/api/peliculas/vista
    
    Este endpoint marca las peliculas como vistas UNICAMENTE en un rol de usuario "user"
 
-   JSON para enviar:
+   JSON para enviar la petición:
 
-   {
-  "usuario_id": 5,
+{
+  "usuario_id": 5, // solo crea con id de user, (ver tabla usuarios columna rol).
   "pelicula_id": 7
 } 
 
-   cuando la respuesta sea exitosa "201 Created" se verá el siguiente JSON:
+   cuando la respuesta sea exitosa saldrá el mensaje "201 Created" 
 
-   {
-    "message": "Película marcada como vista",
-    "resultado": {
-        "id": 1,
-        "usuario_id": 5,
-        "pelicula_id": 5,
-        "fecha_vista": "2025-06-27T05:00:00.000Z"
-    }
-}
+6) GET/api/peliculas-vistas => listar usuarios con las peliculas que han visto "peliculas-vistas"=> http://localhost:3000/api/peliculas-vistas   
+
+Cuando se listen los usuarios se verá el mensaje "200 ok"

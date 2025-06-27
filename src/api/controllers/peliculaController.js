@@ -8,7 +8,7 @@ const PostgresUserRepository = require('../../infrastructure/repositories/Postgr
 const peliculaRepository = new PostgresPeliculaRepository();
 const userRepository = new PostgresUserRepository();
 
-const createPeliculaUseCase = new CreatePeliculaUseCase(peliculaRepository);
+const createPeliculaUseCase = new CreatePeliculaUseCase(peliculaRepository, userRepository);
 const listPeliculasUseCase = new ListPeliculasUseCase(peliculaRepository);
 const listNovedadesUseCase = new ListNovedadesUseCase(peliculaRepository);
 const marcarPeliculaVistaUseCase = new MarcarPeliculaVistaUseCase(peliculaRepository, userRepository);
