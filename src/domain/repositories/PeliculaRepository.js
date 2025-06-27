@@ -8,6 +8,9 @@ class PeliculaRepository {
   async listNovedades() {
         throw new Error('Método no implementado');
   }
+  async marcarComoVista(usuario_id, pelicula_id) {
+        throw new Error('Método no implementado');
+  }
 }
 
 module.exports = PeliculaRepository;

@@ -2,11 +2,16 @@ const CreatePeliculaUseCase = require('../../application/use_cases/CreatePelicul
 const ListPeliculasUseCase = require('../../application/use_cases/ListPeliculasUseCase');
 const PostgresPeliculaRepository = require('../../infrastructure/repositories/PostgresPeliculaRepository');
 const ListNovedadesUseCase = require('../../application/use_cases/ListNovedadesUseCase');
+const MarcarPeliculaVistaUseCase = require('../../application/use_cases/MarcarPeliculaVistaUseCase');
+const PostgresUserRepository = require('../../infrastructure/repositories/PostgresUserRepository');
 
 const peliculaRepository = new PostgresPeliculaRepository();
+const userRepository = new PostgresUserRepository();
+
 const createPeliculaUseCase = new CreatePeliculaUseCase(peliculaRepository);
 const listPeliculasUseCase = new ListPeliculasUseCase(peliculaRepository);
 const listNovedadesUseCase = new ListNovedadesUseCase(peliculaRepository);
+const marcarPeliculaVistaUseCase = new MarcarPeliculaVistaUseCase(peliculaRepository, userRepository);
 
 const crearPelicula = async (req, res) => {
   try {
@@ -36,8 +41,20 @@ const listNovedades = async (req, res) => {
   }
 };
 
+const marcarComoVista = async (req, res) => {
+  try {
+    const { usuario_id, pelicula_id } = req.body;
+    const resultado = await marcarPeliculaVistaUseCase.execute({ usuario_id, pelicula_id });
+    res.status(201).json({ message: 'Película marcada como vista', resultado });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+
 module.exports = {
   crearPelicula,
   listPeliculas,
-  listNovedades
+  listNovedades,
+  marcarComoVista
 };

@@ -1,5 +1,5 @@
 const UserRepository = require('../../domain/repositories/UserRepository');
-const db = require('../database/postgresClient'); // conexión a la base de datos
+const db = require('../database/postgresClient'); 
 
 class PostgresUserRepository extends UserRepository {
   async create({ name, email, password, role }) {
@@ -9,5 +9,11 @@ class PostgresUserRepository extends UserRepository {
 );
     return result.rows[0];
   }
+
+   async findById(id) {
+     const result = await db.query('SELECT * FROM usuarios WHERE id = $1', [id]);
+     return result.rows[0];
+  }
+
 }
 module.exports = PostgresUserRepository;

@@ -52,6 +52,18 @@ class PostgresPeliculaRepository extends PeliculaRepository {
        const result = await db.query(query);
        return result.rows;
     }
+
+     async marcarComoVista(usuario_id, pelicula_id) {
+      const query = `
+        INSERT INTO peliculas_vistas (usuario_id, pelicula_id, fecha_vista)
+        VALUES ($1, $2, CURRENT_DATE)
+        ON CONFLICT (usuario_id, pelicula_id) DO NOTHING
+        RETURNING *
+       `;
+       const result = await db.query(query, [usuario_id, pelicula_id]);
+       return result.rows[0];
+    }
+
 }
 
 module.exports = PostgresPeliculaRepository;

@@ -29,6 +29,10 @@ CREATE TABLE peliculas_vistas (
     fecha_vista DATE NOT NULL DEFAULT CURRENT_DATE
 );
 
+ALTER TABLE peliculas_vistas
+ADD CONSTRAINT unique_usuario_pelicula UNIQUE (usuario_id, pelicula_id);
+
+
 -- Precargar categorías
 INSERT INTO categorias (nombre) VALUES
 ('Terror'), ('Suspenso'), ('Drama'), ('Comedia');
