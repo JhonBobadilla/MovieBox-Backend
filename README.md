@@ -78,3 +78,14 @@ order	       desc
 6) GET/api/peliculas-vistas => listar usuarios con las peliculas que han visto "peliculas-vistas"=> http://localhost:3000/api/peliculas-vistas   
 
 Cuando se listen los usuarios se verá el mensaje "200 ok"
+
+7) DELETE/api/peliculas/borrar => borra una pelicula => http://localhost:3000/api/peliculas/borrar 
+
+Este endpoint borra las peliculas UNICAMENTE en un rol de usuario "admin"
+
+{
+  "pelicula_id": 5,
+  "usuario_id": 4
+}
+
+Cuando se borre la pelicula se verá el mensaje "200 ok" "Película eliminada correctamente"

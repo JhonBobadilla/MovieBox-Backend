@@ -64,6 +64,15 @@ class PostgresPeliculaRepository extends PeliculaRepository {
        return result.rows[0];
     }
 
+     async findById(id) {
+      const result = await db.query('SELECT * FROM peliculas WHERE id = $1', [id]);
+      return result.rows[0];
+    }
+
+    async delete(id) {
+      await db.query('DELETE FROM peliculas WHERE id = $1', [id]);
+    }
+
 }
 
 module.exports = PostgresPeliculaRepository;

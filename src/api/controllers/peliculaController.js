@@ -4,10 +4,12 @@ const PostgresPeliculaRepository = require('../../infrastructure/repositories/Po
 const ListNovedadesUseCase = require('../../application/use_cases/ListNovedadesUseCase');
 const MarcarPeliculaVistaUseCase = require('../../application/use_cases/MarcarPeliculaVistaUseCase');
 const PostgresUserRepository = require('../../infrastructure/repositories/PostgresUserRepository');
+const DeletePeliculaUseCase = require('../../application/use_cases/DeletePeliculaUseCase');
 
 const peliculaRepository = new PostgresPeliculaRepository();
 const userRepository = new PostgresUserRepository();
 
+const deletePeliculaUseCase = new DeletePeliculaUseCase(peliculaRepository, userRepository);
 const createPeliculaUseCase = new CreatePeliculaUseCase(peliculaRepository, userRepository);
 const listPeliculasUseCase = new ListPeliculasUseCase(peliculaRepository);
 const listNovedadesUseCase = new ListNovedadesUseCase(peliculaRepository);
@@ -51,10 +53,21 @@ const marcarComoVista = async (req, res) => {
   }
 };
 
+const borrarPelicula = async (req, res) => {
+  try {
+    const { pelicula_id, usuario_id } = req.body;
+
+    const resultado = await deletePeliculaUseCase.execute({ pelicula_id, usuario_id });
+    res.json(resultado);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
 
 module.exports = {
   crearPelicula,
   listPeliculas,
   listNovedades,
-  marcarComoVista
+  marcarComoVista,
+  borrarPelicula
 };
