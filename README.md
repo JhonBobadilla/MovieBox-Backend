@@ -35,7 +35,7 @@ Key disponible:
 
 titulo: Filtra por el texto en el nombre de la película.
 categoria: Filtra por el nombre de la categoría de la película (Terror, Suspenso, Drama y Comedia).
-page: Número de página para paginación (ejemplo: 1, 2, ...).
+page: Número de página para paginación (ejemplo: 1, 2, 3...).
 limit: Cantidad máxima de películas por página (ejemplo: 10, 20, ...).
 order: Orden de la fecha de estreno (asc para más antiguas primero, desc para más nuevas primero).
 
