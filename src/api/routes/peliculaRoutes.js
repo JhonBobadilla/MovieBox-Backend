@@ -1,7 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { crearPelicula } = require('../controllers/peliculaController');
+const { crearPelicula, listPeliculas } = require('../controllers/peliculaController');
 
-router.post('/peliculas', crearPelicula);
+// POST /api/peliculas
+router.post('/', crearPelicula);
+
+// GET /api/peliculas
+router.get('/', listPeliculas);
 
 module.exports = router;
