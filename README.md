@@ -69,12 +69,14 @@ Arrastrar el archivo "MovieBox API.postman_collection.json" en la carpeta docs
 
 Body de creación:
 
+```bash
 {
   "name": "Carlos",
   "email": "correo1@correo.com",
   "password": "123",
   "role": "admin" // Roles disponibles "admin" y "user"
 }
+```
 
 Respuesta esperada "201 Created"
 
@@ -84,12 +86,14 @@ Respuesta esperada "201 Created"
 
 Crea UNICAMENTE CON id de rol "admin" (ver tabla usuarios columna rol), con el siguiente Body:
 
+```bash
 {
   "titulo": "El Conjuro",
   "fecha_estreno": "2023-06-01",
   "categoria_id": 1 // 1=Terror, 2=Suspenso, 3=Drama y 4=Comedia.
   "usuario_id": 15 // solo crea con id de admin, (ver tabla usuarios columna rol).
 }
+```
 
 Respuesta esperada "201 Created"
 
@@ -131,10 +135,12 @@ Ejemplo de aplicación de filtros en Postman - sección "params" llenar los camp
 
    Body para petición:
 
+```bash
 {
   "usuario_id": 5, // solo crea con id de user, (ver tabla usuarios columna rol).
   "pelicula_id": 7
 } 
+```
 
    Respuesta esperada "201 Created" 
 
@@ -152,10 +158,12 @@ Respuesta esperada "200 ok"
 
 Borra peliculas UNICAMENTE en un rol "admin"
 
+```bash
 {
   "pelicula_id": 5,
   "usuario_id": 4 // Unicamente rol de "admin"
 }
+```
 
 Respuesta esperada "200 ok" "Película eliminada correctamente"
 
@@ -165,6 +173,7 @@ Respuesta esperada "200 ok" "Película eliminada correctamente"
 
 Actualiza las peliculas UNICAMENTE en un rol "admin"
 
+```bash
 {
   "pelicula_id": 7,
   "usuario_id": 1, // Unicamente rol de "admin" 
@@ -172,6 +181,7 @@ Actualiza las peliculas UNICAMENTE en un rol "admin"
   "fecha_estreno": "2024-05-25",
   "categoria_id": 2
 }
+```
 
 El resultado esperado es el Body actualizado.
 
