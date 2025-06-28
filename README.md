@@ -51,7 +51,7 @@ Ver en docs/script_db.sql
 
 ## 6. Instrucciones de ejecución
 
-A continuación se describe cómo probar los endpoints utilizando Postman:
+A continuación se describe cómo probar los endpoints utilizando Postman.
 
 ---
 
@@ -60,6 +60,8 @@ Abrir Postman
 Ir a “Import”
 
 Arrastrar el archivo "MovieBox API.postman_collection.json" en la carpeta docs
+
+---
 
 ### POST/api/users => crear usuario => https://movieboxjhon-0fc8b30f0b82.herokuapp.com/api/users
 
