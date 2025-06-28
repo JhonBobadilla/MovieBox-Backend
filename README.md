@@ -61,13 +61,13 @@ Abrir Postman
 
 Ir a “Import”
 
-Arrastrar el archivo "MovieBox API.postman_collection.json" en la carpeta docs
+Arrastrar el archivo "MovieBox API.postman_collection.json" ubicado en la carpeta docs.
 
 ---
 
 ### POST/api/users => crear usuario => https://movieboxjhon-0fc8b30f0b82.herokuapp.com/api/users
 
-Body de creación:
+Body de creación: SE RECOMIENDA CREAR LOS DOS ROLES (admin y user).
 
 ```bash
 {
@@ -84,14 +84,14 @@ Respuesta esperada "201 Created"
 
 ### POST/api/peliculas => crear pelicula => https://movieboxjhon-0fc8b30f0b82.herokuapp.com/api/peliculas
 
-Crea UNICAMENTE CON id de rol "admin" (ver tabla usuarios columna rol), con el siguiente Body:
+Las películas se crean "UNICAMENTE" con un usuario con id o rol "admin", puede emplear uno de los ya creados (ROLES ADMIN YA CREADOS (id) 6, 7, 11 Y 13), con el siguiente Body:
 
 ```bash
 {
   "titulo": "El Conjuro",
   "fecha_estreno": "2023-06-01",
   "categoria_id": 1 // 1=Terror, 2=Suspenso, 3=Drama y 4=Comedia.
-  "usuario_id": 15 // solo crea con id de admin, (ver tabla usuarios columna rol).
+  "usuario_id": 11 // solo crea con id de admin, utilice uno de los siguientes id 6, 7, 11, o 13.
 }
 ```
 
@@ -123,6 +123,7 @@ Ejemplo de aplicación de filtros en Postman - sección "params" llenar los camp
 ---
 
 ### GET/api/peliculas => listar peliculas "novedades" => https://movieboxjhon-0fc8b30f0b82.herokuapp.com/api/peliculas/novedades
+
    (fecha de estreno inferior a tres semanas)
    
    Respuesta esperada "200 ok"
@@ -131,14 +132,14 @@ Ejemplo de aplicación de filtros en Postman - sección "params" llenar los camp
 
 ### POST/api/peliculas => marcar peliculas como vistas => https://movieboxjhon-0fc8b30f0b82.herokuapp.com/api/peliculas/vista
    
-   Marca las peliculas como vistas UNICAMENTE en un rol "user"
+   Las películas vistas se marcan "UNICAMENTE" con un usuario con id o rol "user", puede emplear uno de los ya creados (ROLES USER YA CREADOS (id) 1, 2, 3, 4, 5, 8, Y 10), con el siguiente Body:
 
    Body para petición:
 
 ```bash
 {
-  "usuario_id": 5, // solo crea con id de user, (ver tabla usuarios columna rol).
-  "pelicula_id": 7
+  "usuario_id": 5, // UNICAMENTE con id de user, utilice uno de los siguientes id. 1,2,3,4,5,8
+  "pelicula_id": 7 // Id de películas del 1 al 27 
 } 
 ```
 
@@ -156,12 +157,12 @@ Respuesta esperada "200 ok"
 
 ### DELETE/api/peliculas/borrar => borra una pelicula => https://movieboxjhon-0fc8b30f0b82.herokuapp.com/api/peliculas/borrar 
 
-Borra peliculas UNICAMENTE en un rol "admin"
+Las películas se borran "UNICAMENTE" con un usuario con id o rol "admin", puede emplear uno de los ya creados (ROLES ADMIN YA CREADOS (id) 6, 7, 11 Y 13), con el siguiente Body:
 
 ```bash
 {
-  "pelicula_id": 5,
-  "usuario_id": 4 // Unicamente rol de "admin"
+  "pelicula_id": 5, // Id de películas del 1 al 27 
+  "usuario_id": 4 // solo borra con id de admin, utilice uno de los siguientes id 6, 7, 11, o 13.
 }
 ```
 
@@ -171,13 +172,13 @@ Respuesta esperada "200 ok" "Película eliminada correctamente"
 
 ### PUT/api/peliculas7actualizar => actualiza una pelicula => https://movieboxjhon-0fc8b30f0b82.herokuapp.com/api/peliculas/actualizar
 
-Actualiza las peliculas UNICAMENTE en un rol "admin"
+Las películas se actualizan "UNICAMENTE" con un usuario con id o rol "admin", puede emplear uno de los ya creados (ROLES ADMIN YA CREADOS (id) 6, 7, 11 Y 13), con el siguiente Body:
 
 ```bash
 {
-  "pelicula_id": 7,
-  "usuario_id": 1, // Unicamente rol de "admin" 
-  "titulo": "La Monja 2",
+  "pelicula_id": 7, // Id de películas del 1 al 27 
+  "usuario_id": 1, // solo actualiza con id de admin, utilice uno de los siguientes id 6, 7, 11, o 13.
+  "titulo": "La Monja 2", //El conjuro, Zodiaco, Rambo, La vida es bella, Supercool "servicio get"
   "fecha_estreno": "2024-05-25",
   "categoria_id": 2
 }
