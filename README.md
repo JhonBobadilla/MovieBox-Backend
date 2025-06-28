@@ -14,6 +14,8 @@ La API está creada con una arquitectura (Clean Architecture), separando las res
 
 Así mismo implementa MVCC (Multi-Version Concurrency Control) característica del motor de base de datos postgreSQL.
 
+Se desarrolla en la rama dev pero se efectua merge a main.
+
 ---
 
 ## 2. Tabla de Contenidos
