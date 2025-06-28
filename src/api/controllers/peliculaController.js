@@ -49,7 +49,15 @@ const marcarComoVista = async (req, res) => {
   try {
     const { usuario_id, pelicula_id } = req.body;
     const resultado = await marcarPeliculaVistaUseCase.execute({ usuario_id, pelicula_id });
-    res.status(201).json({ message: 'Película marcada como vista', resultado });
+
+    res.status(201).json({
+      message: 'Película marcada como vista',
+      resultado: {
+        usuario_id: resultado.usuario_id,
+        pelicula_id: resultado.pelicula_id,
+        fecha_vista: resultado.fecha_vista
+      }
+    });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
