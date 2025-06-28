@@ -110,20 +110,11 @@ Keys disponibles:
 
 Ejemplo de aplicación de filtros en Postman - sección "params" llenar los campos.
 
-Key          Value
-titulo	     bella
-
-Key          Value
-categoria	   Drama
-
-Key          Value
-page	       2
-
-Key          Value
-limit	       5
-
-Key          Value
-order	       desc
+Key = titulo      Value = bella
+Key = categoria   Value = Drama
+Key = page        Value = 2
+Key = limit       Value = 5
+Key = order       Value = desc
 
 ---
 
@@ -191,12 +182,11 @@ El resultado esperado es el Body actualizado.
 El flujo de trabajo usa las siguientes ramas:
 
 - dev: Desarrollo activo con commits frecuentes.
-- test: Pruebas e integración.
 - main: Versión estable para producción.
 
 dev → main
 
-Los merges se realizan de `dev` a `test` para pruebas y de `test` a `main` para releases estables.
+Los merges se realizan de `dev` a `main` para releases estables.
 
 ---
 
