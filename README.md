@@ -55,7 +55,13 @@ A continuación se describe cómo probar los endpoints utilizando Postman:
 
 ---
 
-### POST/api/users => crear usuario => http://localhost:3000/api/users
+Abrir Postman
+
+Ir a “Import”
+
+Arrastrar el archivo "MovieBox API.postman_collection.json" en la carpeta docs
+
+### POST/api/users => crear usuario => https://movieboxjhon-0fc8b30f0b82.herokuapp.com/api/users
 
 Body de creación:
 
@@ -70,7 +76,7 @@ Respuesta esperada "201 Created"
 
 ---
 
-### POST/api/peliculas => crear pelicula => http://localhost:3000/api/peliculas
+### POST/api/peliculas => crear pelicula => https://movieboxjhon-0fc8b30f0b82.herokuapp.com/api/peliculas
 
 Crea UNICAMENTE CON id de rol "admin" (ver tabla usuarios columna rol), con el siguiente Body:
 
@@ -85,7 +91,7 @@ Respuesta esperada "201 Created"
 
 ---
 
-### GET/api/peliculas => listar peliculas => http://localhost:3000/api/peliculas
+### GET/api/peliculas => listar peliculas => https://movieboxjhon-0fc8b30f0b82.herokuapp.com/api/peliculas
 
 En postman - sección "params" emplear uno o varios filtros:
 Por defecto (sin filtro) mostrará 10 peliculas que corresponden a la pagina 1.
@@ -117,14 +123,14 @@ order	       desc
 
 ---
 
-### GET/api/peliculas => listar peliculas "novedades" => http://localhost:3000/api/peliculas/novedades
+### GET/api/peliculas => listar peliculas "novedades" => https://movieboxjhon-0fc8b30f0b82.herokuapp.com/api/peliculas/novedades
    (fecha de estreno inferior a tres semanas)
    
    Respuesta esperada "200 ok"
 
    ---
 
-### POST/api/peliculas => marcar peliculas como vistas => http://localhost:3000/api/peliculas/vista
+### POST/api/peliculas => marcar peliculas como vistas => https://movieboxjhon-0fc8b30f0b82.herokuapp.com/api/peliculas/vista
    
    Marca las peliculas como vistas UNICAMENTE en un rol "user"
 
@@ -139,7 +145,7 @@ order	       desc
 
    ---
 
-### GET/api/peliculas-vistas => lista usuarios con las peliculas que han visto "peliculas-vistas"=> http://localhost:3000/api/peliculas-vistas   
+### GET/api/peliculas-vistas => lista usuarios con las peliculas que han visto "peliculas-vistas"=> https://movieboxjhon-0fc8b30f0b82.herokuapp.com/api/peliculas-vistas   
 
 Lista usuarios con las peliculas que han visto.
 
@@ -147,7 +153,7 @@ Respuesta esperada "200 ok"
 
 ---
 
-### DELETE/api/peliculas/borrar => borra una pelicula => http://localhost:3000/api/peliculas/borrar 
+### DELETE/api/peliculas/borrar => borra una pelicula => https://movieboxjhon-0fc8b30f0b82.herokuapp.com/api/peliculas/borrar 
 
 Borra peliculas UNICAMENTE en un rol "admin"
 
@@ -160,7 +166,7 @@ Respuesta esperada "200 ok" "Película eliminada correctamente"
 
 ---
 
-### PUT/api/peliculas7actualizar => actualiza una pelicula => http://localhost:3000/api/peliculas/actualizar
+### PUT/api/peliculas7actualizar => actualiza una pelicula => https://movieboxjhon-0fc8b30f0b82.herokuapp.com/api/peliculas/actualizar
 
 Actualiza las peliculas UNICAMENTE en un rol "admin"
 
