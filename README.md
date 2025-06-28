@@ -110,11 +110,11 @@ Keys disponibles:
 
 Ejemplo de aplicación de filtros en Postman - sección "params" llenar los campos.
 
-Key = titulo      Value = bella
-Key = categoria   Value = Drama
-Key = page        Value = 2
-Key = limit       Value = 5
-Key = order       Value = desc
+- Key = titulo      Value = bella
+- Key = categoria   Value = Drama
+- Key = page        Value = 2
+- Key = limit       Value = 5
+- Key = order       Value = desc
 
 ---
 
