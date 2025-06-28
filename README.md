@@ -194,7 +194,7 @@ El flujo de trabajo usa las siguientes ramas:
 - test: Pruebas e integración.
 - main: Versión estable para producción.
 
-dev → test → main
+dev → main
 
 Los merges se realizan de `dev` a `test` para pruebas y de `test` a `main` para releases estables.
 
