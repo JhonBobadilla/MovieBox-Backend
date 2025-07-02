@@ -1,3 +1,5 @@
+// Importación de los casos de uso para la gestión de películas y usuarios.
+// Cada caso de uso implementa una funcionalidad del dominio y permite mantener separada la lógica de negocio.
 const CreatePeliculaUseCase = require('../../application/use_cases/CreatePeliculaUseCase');
 const ListPeliculasUseCase = require('../../application/use_cases/ListPeliculasUseCase');
 const PostgresPeliculaRepository = require('../../infrastructure/repositories/PostgresPeliculaRepository');
@@ -7,9 +9,11 @@ const PostgresUserRepository = require('../../infrastructure/repositories/Postgr
 const DeletePeliculaUseCase = require('../../application/use_cases/DeletePeliculaUseCase');
 const UpdatePeliculaUseCase = require('../../application/use_cases/UpdatePeliculaUseCase');
 
+// Instanciación de los repositorios concretos para PostgreSQL, permitiendo acceder y manipular los datos persistidos.
 const peliculaRepository = new PostgresPeliculaRepository();
 const userRepository = new PostgresUserRepository();
 
+// Inicialización de cada caso de uso, inyectando los repositorios necesarios para trabajar de manera desacoplada.
 const updatePeliculaUseCase = new UpdatePeliculaUseCase(peliculaRepository, userRepository);
 const deletePeliculaUseCase = new DeletePeliculaUseCase(peliculaRepository, userRepository);
 const createPeliculaUseCase = new CreatePeliculaUseCase(peliculaRepository, userRepository);
@@ -17,6 +21,10 @@ const listPeliculasUseCase = new ListPeliculasUseCase(peliculaRepository);
 const listNovedadesUseCase = new ListNovedadesUseCase(peliculaRepository);
 const marcarPeliculaVistaUseCase = new MarcarPeliculaVistaUseCase(peliculaRepository, userRepository);
 
+/**
+ * Controlador para crear una nueva película.
+ * Utiliza el caso de uso CreatePeliculaUseCase, que valida los datos y persiste la nueva película en la base de datos.
+ */
 const crearPelicula = async (req, res) => {
   try {
     const pelicula = await createPeliculaUseCase.execute(req.body);
@@ -26,6 +34,10 @@ const crearPelicula = async (req, res) => {
   }
 };
 
+/**
+ * Controlador para listar películas con filtros opcionales.
+ * Permite filtrar por título, categoría, aplicar paginación y ordenamiento usando el caso de uso ListPeliculasUseCase.
+ */
 const listPeliculas = async (req, res) => {
     try {
         const { titulo, categoria, page, limit, order } = req.query;
@@ -36,6 +48,10 @@ const listPeliculas = async (req, res) => {
     }
 };
 
+/**
+ * Controlador para listar novedades.
+ * Devuelve solo las películas que han sido estrenadas recientemente, utilizando el caso de uso ListNovedadesUseCase.
+ */
 const listNovedades = async (req, res) => {
   try {
     const novedades = await listNovedadesUseCase.execute();
@@ -45,6 +61,10 @@ const listNovedades = async (req, res) => {
   }
 };
 
+/**
+ * Controlador para marcar una película como vista por un usuario.
+ * Utiliza MarcarPeliculaVistaUseCase para registrar la visualización y asegurar que no se duplique el registro.
+ */
 const marcarComoVista = async (req, res) => {
   try {
     const { usuario_id, pelicula_id } = req.body;
@@ -63,6 +83,10 @@ const marcarComoVista = async (req, res) => {
   }
 };
 
+/**
+ * Controlador para borrar una película existente.
+ * Elimina la película siempre que exista y el usuario tenga los permisos adecuados, usando DeletePeliculaUseCase.
+ */
 const borrarPelicula = async (req, res) => {
   try {
     const { pelicula_id, usuario_id } = req.body;
@@ -74,9 +98,13 @@ const borrarPelicula = async (req, res) => {
   }
 };
 
+/**
+ * Controlador para actualizar los datos de una película.
+ * Permite modificar los campos de una película existente, siempre que el usuario tenga permisos y los datos sean válidos.
+ */
 const actualizarPelicula = async (req, res) => {
   try {
-    const data = req.body; // Debe incluir pelicula_id, usuario_id y los campos a actualizar
+    const data = req.body; // Se espera pelicula_id, usuario_id y los campos a actualizar.
     const updated = await updatePeliculaUseCase.execute(data);
     res.json(updated);
   } catch (error) {
@@ -84,6 +112,7 @@ const actualizarPelicula = async (req, res) => {
   }
 };
 
+// Exportación de todos los controladores para su uso en las rutas de la API.
 module.exports = {
   actualizarPelicula,
   crearPelicula,
@@ -92,3 +121,4 @@ module.exports = {
   marcarComoVista,
   borrarPelicula
 };
+

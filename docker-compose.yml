@@ -1,3 +1,5 @@
+#cómo deben funcionar varios servicios a la vez (por ejemplo: base de datos, etc.)
+
 version: '3.8'
 
 services:
